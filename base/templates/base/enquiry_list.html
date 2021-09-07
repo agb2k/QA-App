@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questions</title>
+</head>
+<body>
+<h1>Questions</h1>
+
+<table>
+    {% for enquiry in enquiries %}
+        <tr>
+            <td>{{ forloop.counter }}.</td>
+            <td> {{ enquiry.enquiry }}</td>
+            <td> ({{ enquiry.subject }})</td>
+            <td>
+                <form action="{% url 'enquiry-delete' enquiry.id %}">
+                    <input type="submit" value="Delete" />
+                </form>
+            </td>
+            <td>
+                <form action="{% url 'enquiry-details' enquiry.id %}">
+                    <input type="submit" value="Details" />
+                </form>
+            </td>
+            <td>
+                <form action="{% url 'enquiry-update' enquiry.id %}">
+                    <input type="submit" value="Update" />
+                </form>
+            </td>
+
+        </tr>
+    {%  empty %}
+        <h3>No enquiries at the moment</h3>
+    {%  endfor %}
+</table>
+
+<form action="{% url 'enquiry-create' %}">
+    <input type="submit" value="Ask a Question!" />
+</form>
+
+</body>
+</html>

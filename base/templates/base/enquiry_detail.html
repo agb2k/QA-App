@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+<h3>Question Details</h3>
+<p>Subject: {{ enquiry.subject }}</p>
+<p>Enquiry: {{ enquiry.enquiry }}</p>
+<p>Details: {{ enquiry.details }}</p>
+<p>User: {{ enquiry.user }}</p>
+<p>Time: {{ enquiry.time }}</p>
+
+<form action="{% url 'enquiry' %}">
+    {% csrf_token %}
+    <input value="Go back" type="submit">
+</form>
+
+</body>
+</html>
